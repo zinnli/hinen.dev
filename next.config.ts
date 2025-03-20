@@ -1,7 +1,5 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = { transpilePackages: ['next-mdx-remote']};
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
+// Merge MDX config with Next.js config
 export default nextConfig;
