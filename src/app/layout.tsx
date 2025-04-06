@@ -24,6 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link
+        href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css"
+        rel="stylesheet"
+        type="text/css"
+      />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
