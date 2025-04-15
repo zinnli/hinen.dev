@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import dayjs from "dayjs";
 
 const BASE_PATH = "src/markdown";
 const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
@@ -24,9 +25,10 @@ export const parsePostDetail = async (postPath: string): Promise<Post> => {
   const fileContents = fs.readFileSync(postPath, "utf8");
 
   const { data, content } = matter(fileContents);
-  const grrayMatter = data as PostMeta;
+  const grayMatter = data as PostMeta;
+  const date = dayjs(grayMatter.date).locale("ko").format("MMM DD, YYYY");
 
-  return { ...grrayMatter, content };
+  return { ...grayMatter, content, date };
 };
 
 export const getPostDetail = async (category: string, slug: string) => {
