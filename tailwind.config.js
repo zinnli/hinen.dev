@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#F98624",
-        primary_sub: "#F98624",
+        primary: "#FF8A27",
+        primary_sub: "#FFBE87",
         white: "#fafaf8",
         black: "#1a1a1a",
         gray: "#9B9B9B",
@@ -16,7 +16,7 @@ module.exports = {
         18: ["18px"],
         20: ["20px"],
         25: ["25px"],
-        30: ["30px"],
+        22: ["22px"], //30 -> 22 변경
         40: ["40px"],
       },
     },
