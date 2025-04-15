@@ -6,12 +6,13 @@ interface ListProps {
   desc: string;
   date: string;
   category: string;
+  path: string;
 }
 
-const List = ({ title, desc, date, category }: ListProps) => {
+const List = ({ title, desc, date, category, path }: ListProps) => {
   return (
     <Link
-      href="/1"
+      href={path}
       className="flex flex-col px-5 py-6 w-4/5 max-w-[750px] border-b  border-b-primary hover:bg-primary_sub/10 hover:text-primary"
     >
       <h3 className="text-22 mb-2 font-bold">{title}</h3>
