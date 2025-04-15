@@ -9,8 +9,8 @@ const PostDetail = async ({ params }: Props) => {
   const post = await getPostDetail(params.category, params.slug);
 
   return (
-    <article className="prose mx-auto">
-      <h1>{post.title}</h1>
+    <article>
+      <h1 className="text-primary">{post.title}</h1>
       <Post post={post} />
     </article>
   );
