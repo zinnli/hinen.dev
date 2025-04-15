@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 
 import { Header } from "@/components";
 import "./globals.css";
@@ -13,12 +14,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <link
-        href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css"
-        rel="stylesheet"
-        type="text/css"
-      />
-      <body>
+      <Head>
+        <link
+          href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css"
+          rel="stylesheet"
+          type="text/css"
+        />
+      </Head>
+      <body className="flex flex-col items-center">
         <Header />
         {children}
       </body>

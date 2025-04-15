@@ -3,7 +3,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="flex gap-5 py-3 px-7 border-b border-b-primary">
+    <header className="flex w-4/5 max-w-[750px] gap-5 py-3 px-7 border-b border-b-primary">
       <Link href="/" className="text-22 text-primary">
         HOME
       </Link>
