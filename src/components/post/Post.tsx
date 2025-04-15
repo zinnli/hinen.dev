@@ -1,4 +1,8 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+
+import { Mdx } from "../mdx";
 
 interface Props {
   post: {
@@ -15,7 +19,21 @@ const Post = ({ post }: Props) => {
     return <p>Error: No content available</p>;
   }
 
-  return <MDXRemote source={post.content} />;
+  return (
+    <article className="prose  prose-lg prose-slate">
+      <MDXRemote
+        source={post.content}
+        options={{
+          parseFrontmatter: true,
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [rehypeSlug],
+          },
+        }}
+        components={Mdx}
+      />
+    </article>
+  );
 };
 
 export default Post;
