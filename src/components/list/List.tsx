@@ -1,7 +1,11 @@
 import Link from "next/link";
 import React from "react";
 
+import FolderIcon from "../../assets/icons/ic_folder.svg";
+import CalendarIcon from "../../assets/icons/ic_calendar.svg";
+
 interface ListProps {
+  isPost: boolean;
   title: string;
   desc: string;
   date: string;
@@ -9,20 +13,34 @@ interface ListProps {
   path: string;
 }
 
-const List = ({ title, desc, date, category, path }: ListProps) => {
+const List = ({ isPost, title, desc, date, category, path }: ListProps) => {
   return (
     <Link
       href={path}
-      className="flex flex-col px-5 py-6 w-4/5 max-w-[750px] border-b  border-b-primary hover:bg-primary_sub/10 hover:text-primary"
+      className={`flex flex-col ${isPost ? "py-3" : "py-6 pt-4"} px-4  border-b w-[100%] border-b-primary_sub/30  hover:text-primary`}
     >
-      <h3 className="text-22 mb-2 font-bold">{title}</h3>
-      <span className="block size-full text-14 text-gray  break-words text-overflow h-auto min-h-[42px] mb-5">
+      <h3
+        className={`text-20 ${isPost ? "mb-1" : "mb-3"} font-bold text-black hover:text-primary`}
+      >
+        {title}
+      </h3>
+      <span
+        className={`block size-full ${isPost ? "mb-3" : ""} text-12 text-gray break-words text-overflow`}
+      >
         {desc}
       </span>
-      <div className="flex justify-end gap-5">
-        <span className="text-14  text-gray">🗓️ {date}</span>
-        <span className="text-14  text-gray">📂 {category}</span>
-      </div>
+      {isPost && (
+        <div className="flex justify-end gap-2">
+          <p className="flex gap-x-1">
+            <FolderIcon className="h-[18px] w-[18px] fill-gray" />
+            <span className="text-12  text-gray min-w-[50px]">{category}</span>
+          </p>
+          <p className="flex gap-x-1">
+            <CalendarIcon className="h-[18px] w-[18px] fill-gray" />
+            <span className="text-12  text-gray">{date}</span>
+          </p>
+        </div>
+      )}
     </Link>
   );
 };

@@ -10,29 +10,33 @@ module.exports = {
         primary: "#FF8A27",
         primary_sub: "#FFBE87",
         white: "#fafaf8",
+        gray_bg: "#F2F2F2",
         black: "#1a1a1a",
-        gray: "#9B9B9B",
+        gray: "#6c757d",
         gray_sub: "#B4B4B4",
+        navy: "#1e293b",
       },
       fontSize: {
+        12: ["12px"],
         14: ["14px"],
         16: ["16px"],
         18: ["18px"],
         20: ["20px"],
-        25: ["25px"],
         22: ["22px"], //30 -> 22 변경
-        36: ["36px"],
+        40: ["40px"],
+        50: ["50px"],
       },
+
       typography: {
         DEFAULT: {
           css: {
-            h1: { fontSize: "30px !important" },
-            h2: { fontSize: "25px !important" },
+            h1: { fontSize: "28px !important" },
+            h2: { fontSize: "24px !important" },
             h3: { fontSize: "22px !important" },
             h4: { fontSize: "18px !important" },
             "h2, h3, h4": {
               scrollMarginTop: "2rem",
-              margin: "20px 0 !important",
+              margin: "10px 0 !important",
             },
             p: {
               margin: "0.8rem 0 !important",
