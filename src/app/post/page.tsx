@@ -48,6 +48,7 @@ const Page = async ({ params, searchParams }: Props) => {
           return (
             <List
               key={item.filePath}
+              isPost
               category={item.categoryPath}
               date={item.date}
               desc={item.desc}
