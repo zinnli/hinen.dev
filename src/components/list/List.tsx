@@ -5,6 +5,7 @@ import FolderIcon from "../../assets/icons/ic_folder.svg";
 import CalendarIcon from "../../assets/icons/ic_calendar.svg";
 
 interface ListProps {
+  isPost: boolean;
   title: string;
   desc: string;
   date: string;
@@ -12,26 +13,34 @@ interface ListProps {
   path: string;
 }
 
-const List = ({ title, desc, date, category, path }: ListProps) => {
+const List = ({ isPost, title, desc, date, category, path }: ListProps) => {
   return (
     <Link
       href={path}
-      className="flex flex-col px-4 py-3 border-b w-[100%] border-b-primary_sub/30 hover:text-primary"
+      className={`flex flex-col ${isPost ? "py-3" : "py-6 pt-4"} px-4  border-b w-[100%] border-b-primary_sub/30  hover:text-primary`}
     >
-      <h3 className="text-20 mb-1 font-bold text-black">{title}</h3>
-      <span className="block size-full text-12 text-gray  break-words text-overflow h-auto mb-3">
+      <h3
+        className={`text-20 ${isPost ? "mb-1" : "mb-3"} font-bold text-black hover:text-primary`}
+      >
+        {title}
+      </h3>
+      <span
+        className={`block size-full ${isPost ? "mb-3" : ""} text-12 text-gray break-words text-overflow`}
+      >
         {desc}
       </span>
-      <div className="flex justify-end gap-2">
-        <p className="flex gap-x-1">
-          <FolderIcon className="h-[18px] w-[18px] fill-gray" />
-          <span className="text-12  text-gray min-w-[50px]">{category}</span>
-        </p>
-        <p className="flex gap-x-1">
-          <CalendarIcon className="h-[18px] w-[18px] fill-gray" />
-          <span className="text-12  text-gray">{date}</span>
-        </p>
-      </div>
+      {isPost && (
+        <div className="flex justify-end gap-2">
+          <p className="flex gap-x-1">
+            <FolderIcon className="h-[18px] w-[18px] fill-gray" />
+            <span className="text-12  text-gray min-w-[50px]">{category}</span>
+          </p>
+          <p className="flex gap-x-1">
+            <CalendarIcon className="h-[18px] w-[18px] fill-gray" />
+            <span className="text-12  text-gray">{date}</span>
+          </p>
+        </div>
+      )}
     </Link>
   );
 };
