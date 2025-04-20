@@ -66,7 +66,11 @@ export const getPostList = async (
     })
   );
 
-  return postList;
+  const sortedPostList = postList.sort(
+    (a, b) => dayjs(b.date).unix() - dayjs(a.date).unix()
+  );
+
+  return sortedPostList;
 };
 
 type MarkdownInfosType = { count: number; category: string };

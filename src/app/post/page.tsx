@@ -1,7 +1,7 @@
+import Link from "next/link";
+
 import { List } from "@/components";
 import { getMarkdownInfos, getPostList } from "@/lib/mdx";
-import dayjs from "dayjs";
-import Link from "next/link";
 
 type Props = {
   params: { category: string };
@@ -44,20 +44,18 @@ const Page = async ({ params, searchParams }: Props) => {
         {(selectedCategory
           ? post.filter((item) => item.categoryPath === selectedCategory)
           : post
-        )
-          .sort((a, b) => dayjs(b.date).unix() - dayjs(a.date).unix())
-          .map((item) => {
-            return (
-              <List
-                key={item.filePath}
-                category={item.categoryPath}
-                date={item.date}
-                desc={item.desc}
-                path={`/post/${item.filePath}`}
-                title={item.title}
-              />
-            );
-          })}
+        ).map((item) => {
+          return (
+            <List
+              key={item.filePath}
+              category={item.categoryPath}
+              date={item.date}
+              desc={item.desc}
+              path={`/post/${item.filePath}`}
+              title={item.title}
+            />
+          );
+        })}
       </div>
     </section>
   );
