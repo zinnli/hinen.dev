@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: "공부한 내용을 정리, 공유합니다.",
 };
 
+export const dynamic = "true";
+
 const Post = async ({
   params,
   searchParams,
