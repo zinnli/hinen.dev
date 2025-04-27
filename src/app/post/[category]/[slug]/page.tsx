@@ -26,11 +26,12 @@ export async function generateMetadata({
   };
 }
 
-// generateStaticParams를 동기적으로 처리하여 카테고리와 슬러그를 정적으로 준비
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   const postPaths: string[] = getPostPaths();
   const paramList = postPaths
-    .map((path) => parseMarkdownPath(path)) // 동기적으로 경로 처리
+    .map((path) => parseMarkdownPath(path))
     .map((item) => ({
       params: {
         category: item.categoryPath,

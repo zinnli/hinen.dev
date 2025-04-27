@@ -15,6 +15,8 @@ export function generateStaticParams() {
   return paramList;
 }
 
+export const dynamicParams = false;
+
 const Post = async ({ params }: { params: Promise<{ category: string }> }) => {
   const { category } = await params;
 
