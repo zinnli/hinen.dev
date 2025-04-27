@@ -2,20 +2,17 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { List } from "@/components";
-import { getMarkdownInfos, getPostList } from "@/lib/mdx";
+import { getMarkdownInfos, getPostList, getPostPaths } from "@/lib/mdx";
 
 export const metadata: Metadata = {
   title: "ZINLOG | POST",
   description: "공부한 내용을 정리, 공유합니다.",
 };
 
-export async function generateStaticParams() {
-  const categories = await getMarkdownInfos(); // 카테고리 목록을 가져오는 작업이 필요
-
-  // 카테고리 목록을 기반으로 정적 경로 생성
-  return categories.map((category) => ({
-    params: { category: category.category },
-  }));
+export function generateStaticParams() {
+  const categoryList = getPostPaths();
+  const paramList = categoryList.map((category) => ({ category }));
+  return paramList;
 }
 
 const Post = async ({ params }: { params: Promise<{ category: string }> }) => {
