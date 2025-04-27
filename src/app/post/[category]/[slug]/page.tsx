@@ -1,12 +1,14 @@
 import { Post } from "@/components";
 import { getPostDetail } from "@/lib/mdx";
 
-type Props = {
-  params: { category: string; slug: string };
-};
+const PostDetail = async ({
+  params,
+}: {
+  params: Promise<{ category: string; slug: string }>;
+}) => {
+  const { category, slug } = await params;
 
-const PostDetail = async ({ params }: Props) => {
-  const post = await getPostDetail(params.category, params.slug);
+  const post = await getPostDetail(category, slug);
 
   return (
     <article className="flex flex-col w-[100%] max-w-[700px] px-4 py-10">

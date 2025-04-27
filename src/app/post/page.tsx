@@ -3,16 +3,20 @@ import Link from "next/link";
 import { List } from "@/components";
 import { getMarkdownInfos, getPostList } from "@/lib/mdx";
 
-type Props = {
-  params: { category: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+const Page = async ({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ category: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const { category } = await params;
+  const searchParamsData = await searchParams;
 
-const Page = async ({ params, searchParams }: Props) => {
-  const post = await getPostList(params.category);
+  const post = await getPostList(category);
   const categories = await getMarkdownInfos();
 
-  const selectedCategory = searchParams.category;
+  const selectedCategory = searchParamsData.category;
 
   const totalCount = categories.reduce((acc, curr) => acc + curr.count, 0);
 
