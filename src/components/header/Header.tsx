@@ -10,19 +10,20 @@ const Header = () => {
   const currentPath = pathname.split("/")[1];
 
   const textBoldStyle = (path: string): string =>
-    `text-20 ${currentPath === path || (!currentPath && path === "home") ? "text-primary border-b border-b-primary_sub_30 font-bold" : "text-primary/80"}  hover:font-bold`;
+    `text-20 ${currentPath === path || (!currentPath && path === "blog") ? "text-black border-b border-b-primary_sub_30 font-bold" : "text-black/80"}  hover:text-primary`;
 
   return (
-    <header className="sticky top-0 flex w-[100%] max-w-[750px] gap-5 py-3 px-7 border-b-primary_sub/20 bg-gray_bg">
-      <Link href="/" className={textBoldStyle("home")}>
-        HOME
+    <header className="sticky top-0 flex justify-end w-[100%] max-w-[750px] gap-5 py-3 px-7 border-b-primary_sub/20 bg-gray_bg">
+      <Link href="/" className={textBoldStyle("blog")}>
+        ZINLOG
       </Link>
       <Link href="/post" className={textBoldStyle("post")}>
         POSTS
       </Link>
+      {/* 프로젝트 2개 이상 나올 때까지 임시 주석 처리 
       <Link href="/project" className={textBoldStyle("project")}>
         PROJECTS
-      </Link>
+      </Link> */}
       <Link href="/about" className={textBoldStyle("about")}>
         ABOUT
       </Link>
