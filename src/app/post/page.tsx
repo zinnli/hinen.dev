@@ -1,18 +1,28 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { List } from "@/components";
 import { getMarkdownInfos, getPostList } from "@/lib/mdx";
 
-type Props = {
-  params: { category: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+export const metadata: Metadata = {
+  title: "ZINLOG | POST",
+  description: "공부한 내용을 정리, 공유합니다.",
 };
 
-const Page = async ({ params, searchParams }: Props) => {
-  const post = await getPostList(params.category);
+const Post = async ({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ category: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const { category } = await params;
+  const searchParamsData = await searchParams;
+
+  const post = await getPostList(category);
   const categories = await getMarkdownInfos();
 
-  const selectedCategory = searchParams.category;
+  const selectedCategory = searchParamsData.category;
 
   const totalCount = categories.reduce((acc, curr) => acc + curr.count, 0);
 
@@ -37,7 +47,7 @@ const Page = async ({ params, searchParams }: Props) => {
           );
         })}
       </div>
-      <section className="flex flex-col gap-y-2">
+      <section className="flex flex-col gap-y-2 w-[100%]">
         {(selectedCategory
           ? post.filter((item) => item.categoryPath === selectedCategory)
           : post
@@ -59,4 +69,4 @@ const Page = async ({ params, searchParams }: Props) => {
   );
 };
 
-export default Page;
+export default Post;

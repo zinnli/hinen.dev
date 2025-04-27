@@ -1,11 +1,17 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 
 import ProfileImage from "@/assets/images/about-profile.jpeg";
+
+export const metadata: Metadata = {
+  title: "ZINLOG | ABOUT",
+  description: "저를 소개합니다.",
+};
 
 const About = () => {
   return (
     <main className="flex flex-col items-center w-[100%] max-w-[750px] px-7">
-      <section className="flex flex-col mt-12">
+      <section className="flex flex-col mt-12 w-[100%]">
         <div className="flex justify-start gap-x-5 w-[100%] h-[100px] mb-10">
           <Image
             className="w-[100px] h-[100px] rounded-full bg-gray object-cover"

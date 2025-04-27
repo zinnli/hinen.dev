@@ -1,9 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { List } from "@/components";
 import { getPostList } from "@/lib/mdx";
 import ProfileImage from "@/assets/images/profile.png";
+
+export const metadata: Metadata = {
+  title: "ZINLOG",
+  description: "현진 로그입니다.",
+};
 
 const Blog = async () => {
   const post = await getPostList("");
@@ -30,7 +36,7 @@ const Blog = async () => {
       <Link href="" className="hover:text-primary">
         &gt; more about me
       </Link>
-      <section>
+      <section className="w-[100%]">
         <h1 className="flex justify-start gap-x-5 w-[100%] mt-8 my-5 mb-3 text-36 text-black">
           <span>Recent</span>
           <span className="font-black">Posts</span>
