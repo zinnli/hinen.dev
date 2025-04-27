@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#FF8A27",
+        primary: "#FF982B",
         primary_sub: "#FFBE87",
         white: "#fafaf8",
         gray_bg: "#F2F2F2",
@@ -21,10 +21,10 @@ module.exports = {
         16: ["16px"],
         18: ["18px"],
         20: ["20px"],
-        22: ["22px"], //30 -> 22 변경
+        22: ["22px"],
         30: ["30px"],
+        36: ["36px"],
         40: ["40px"],
-        50: ["50px"],
       },
       typography: {
         DEFAULT: {

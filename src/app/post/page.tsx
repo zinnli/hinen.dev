@@ -21,10 +21,7 @@ const Page = async ({ params, searchParams }: Props) => {
 
   return (
     <section className="flex flex-col items-center w-[100%] max-w-[750px] px-7">
-      <h1 className="flex justify-start w-[100%] text-50 font-black text-primary my-7 mb-4">
-        POSTS
-      </h1>
-      <div className="flex justify-end gap-x-[10px] w-[100%] mb-12">
+      <div className="flex justify-start gap-x-[10px] w-[100%]  mt-12 mb-12">
         <Link className={selectTextStyle(!selectedCategory)} href={"/post"}>
           All({totalCount})
         </Link>
