@@ -9,6 +9,14 @@ export const metadata: Metadata = {
   description: "공부한 내용을 정리, 공유합니다.",
 };
 
+export async function generateStaticParams() {
+  const categories = await getMarkdownInfos();
+
+  return categories.map((category) => ({
+    params: { category: category.category },
+  }));
+}
+
 const Post = async ({
   params,
   searchParams,
