@@ -14,7 +14,6 @@ module.exports = {
         black: "#1a1a1a",
         gray: "#6c757d",
         gray_sub: "#B4B4B4",
-        navy: "#1e293b",
       },
       fontSize: {
         12: ["12px"],
@@ -23,10 +22,10 @@ module.exports = {
         18: ["18px"],
         20: ["20px"],
         22: ["22px"], //30 -> 22 변경
+        30: ["30px"],
         40: ["40px"],
         50: ["50px"],
       },
-
       typography: {
         DEFAULT: {
           css: {
