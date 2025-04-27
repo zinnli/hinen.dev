@@ -10,6 +10,7 @@ const nextConfig = {
     });
     return config;
   },
+  output: "export",
 };
 
 // Merge MDX config with Next.js config

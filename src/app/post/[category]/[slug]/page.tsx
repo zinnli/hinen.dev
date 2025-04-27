@@ -3,6 +3,18 @@ import type { Metadata } from "next";
 import { Post } from "@/components";
 import { getPostDetail, getPostPaths, parseMarkdownPath } from "@/lib/mdx";
 
+export function generateStaticParams() {
+  const postPaths: string[] = getPostPaths();
+  const paramList = postPaths
+    .map((path) => parseMarkdownPath(path))
+    .map((item) => ({
+      category: item.categoryPath,
+      slug: item.filePath.split("/")[1],
+    }));
+
+  return paramList;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,20 +39,6 @@ export async function generateMetadata({
 }
 
 export const dynamicParams = false;
-
-export function generateStaticParams() {
-  const postPaths: string[] = getPostPaths();
-  const paramList = postPaths
-    .map((path) => parseMarkdownPath(path))
-    .map((item) => ({
-      params: {
-        category: item.categoryPath,
-        slug: item.filePath.split("/")[1],
-      },
-    }));
-
-  return paramList;
-}
 
 const PostDetail = async ({
   params,
