@@ -32,7 +32,7 @@ export function generateStaticParams() {
     .map((path) => parseMarkdownPath(path))
     .map((item) => ({
       category: item.categoryPath,
-      slug: item.filePath.split("/")[1],
+      slug: item.filePath,
     }));
 
   return paramList;
