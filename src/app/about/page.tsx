@@ -1,6 +1,12 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 
 import ProfileImage from "@/assets/images/about-profile.jpeg";
+
+export const metadata: Metadata = {
+  title: "ZINLOG | ABOUT",
+  description: "저를 소개합니다.",
+};
 
 const About = () => {
   return (

@@ -1,9 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { List } from "@/components";
 import { getMarkdownInfos, getPostList } from "@/lib/mdx";
 
-const Page = async ({
+export const metadata: Metadata = {
+  title: "ZINLOG | POST",
+  description: "공부한 내용을 정리, 공유합니다.",
+};
+
+const Post = async ({
   params,
   searchParams,
 }: {
@@ -63,4 +69,4 @@ const Page = async ({
   );
 };
 
-export default Page;
+export default Post;

@@ -1,9 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { List } from "@/components";
 import { getPostList } from "@/lib/mdx";
 import ProfileImage from "@/assets/images/profile.png";
+
+export const metadata: Metadata = {
+  title: "ZINLOG",
+  description: "현진 로그입니다.",
+};
 
 const Blog = async () => {
   const post = await getPostList("");
