@@ -1,15 +1,9 @@
-import path from "path";
-import { Configuration } from "webpack";
-
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
   transpilePackages: ["next-mdx-remote"],
   reactStrictMode: true,
-  sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
-  },
-  webpack: (config: Configuration) => {
+  webpack: (config) => {
     config.module?.rules?.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],
