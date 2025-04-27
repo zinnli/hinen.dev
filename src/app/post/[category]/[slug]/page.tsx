@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { Post } from "@/components";
-import { getPostDetail } from "@/lib/mdx";
+import { getPostDetail, getPostPaths, parseMarkdownPath } from "@/lib/mdx";
 
 export async function generateMetadata({
   params,
@@ -24,6 +24,18 @@ export async function generateMetadata({
       publishedTime: post.date,
     },
   };
+}
+
+export function generateStaticParams() {
+  const postPaths: string[] = getPostPaths();
+  const paramList = postPaths
+    .map((path) => parseMarkdownPath(path))
+    .map((item) => ({
+      category: item.categoryPath,
+      slug: item.filePath.split("/")[1],
+    }));
+
+  return paramList;
 }
 
 const PostDetail = async ({

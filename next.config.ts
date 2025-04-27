@@ -4,7 +4,6 @@ import { Configuration } from "webpack";
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  output: "export",
   transpilePackages: ["next-mdx-remote"],
   reactStrictMode: true,
   sassOptions: {
