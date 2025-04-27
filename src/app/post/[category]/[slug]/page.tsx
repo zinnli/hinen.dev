@@ -26,13 +26,16 @@ export async function generateMetadata({
   };
 }
 
+// generateStaticParams를 동기적으로 처리하여 카테고리와 슬러그를 정적으로 준비
 export function generateStaticParams() {
   const postPaths: string[] = getPostPaths();
   const paramList = postPaths
-    .map((path) => parseMarkdownPath(path))
+    .map((path) => parseMarkdownPath(path)) // 동기적으로 경로 처리
     .map((item) => ({
-      category: item.categoryPath,
-      slug: item.filePath.split("/")[1],
+      params: {
+        category: item.categoryPath,
+        slug: item.filePath.split("/")[1],
+      },
     }));
 
   return paramList;

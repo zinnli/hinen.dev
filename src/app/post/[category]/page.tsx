@@ -10,8 +10,9 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  const categories = await getMarkdownInfos();
+  const categories = await getMarkdownInfos(); // 카테고리 목록을 가져오는 작업이 필요
 
+  // 카테고리 목록을 기반으로 정적 경로 생성
   return categories.map((category) => ({
     params: { category: category.category },
   }));
@@ -22,7 +23,7 @@ const Post = async ({ params }: { params: Promise<{ category: string }> }) => {
 
   const post = await getPostList(category);
   const categories = await getMarkdownInfos();
-  console.log(category);
+
   const totalCount = categories.reduce((acc, curr) => acc + curr.count, 0);
 
   const selectTextStyle = (isSelected: boolean) =>
