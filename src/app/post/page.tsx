@@ -41,7 +41,7 @@ const Page = async ({
           );
         })}
       </div>
-      <section className="flex flex-col gap-y-2">
+      <section className="flex flex-col gap-y-2 w-[100%]">
         {(selectedCategory
           ? post.filter((item) => item.categoryPath === selectedCategory)
           : post

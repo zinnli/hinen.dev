@@ -30,7 +30,7 @@ const Blog = async () => {
       <Link href="" className="hover:text-primary">
         &gt; more about me
       </Link>
-      <section>
+      <section className="w-[100%]">
         <h1 className="flex justify-start gap-x-5 w-[100%] mt-8 my-5 mb-3 text-36 text-black">
           <span>Recent</span>
           <span className="font-black">Posts</span>
