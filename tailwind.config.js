@@ -35,10 +35,8 @@ module.exports = {
             h4: { fontSize: "18px !important" },
             "h2, h3, h4": {
               scrollMarginTop: "2rem",
-              margin: "10px 0 !important",
             },
             p: {
-              margin: "0.8rem 0 !important",
               fontSize: 15,
             },
             ".callout-contents > p": {
@@ -50,7 +48,8 @@ module.exports = {
             },
 
             hr: {
-              margin: "10px 0 !important",
+              margin: "2rem 0 !important",
+              borderColor: "#B4B4B4",
             },
 
             ":not(pre) > code": {
