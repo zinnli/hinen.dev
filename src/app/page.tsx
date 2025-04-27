@@ -30,25 +30,27 @@ const Blog = async () => {
       <Link href="" className="hover:text-primary">
         &gt; more about me
       </Link>
-      <h1 className="flex justify-start gap-x-5 w-[100%] mt-8 my-5 mb-3 text-36 text-black">
-        <span>Recent</span>
-        <span className="font-black">Posts</span>
-      </h1>
-      <div className="flex flex-col gap-y-2">
-        {post.slice(0, 3).map((item) => {
-          return (
-            <List
-              key={item.filePath}
-              isPost={false}
-              category={item.categoryPath}
-              date={item.date}
-              desc={item.desc}
-              path={`/post/${item.filePath}`}
-              title={item.title}
-            />
-          );
-        })}
-      </div>
+      <section>
+        <h1 className="flex justify-start gap-x-5 w-[100%] mt-8 my-5 mb-3 text-36 text-black">
+          <span>Recent</span>
+          <span className="font-black">Posts</span>
+        </h1>
+        <div className="flex flex-col gap-y-2">
+          {post.slice(0, 3).map((item) => {
+            return (
+              <List
+                key={item.filePath}
+                isPost={false}
+                category={item.categoryPath}
+                date={item.date}
+                desc={item.desc}
+                path={`/post/${item.filePath}`}
+                title={item.title}
+              />
+            );
+          })}
+        </div>
+      </section>
     </main>
   );
 };

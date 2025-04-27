@@ -20,7 +20,7 @@ const Page = async ({ params, searchParams }: Props) => {
     `text-16 ${isSelected ? "font-bold text-black" : "font-normal text-black/80"}`;
 
   return (
-    <section className="flex flex-col items-center w-[100%] max-w-[750px] px-7">
+    <main className="flex flex-col items-center w-[100%] max-w-[750px] px-7">
       <div className="flex justify-start gap-x-[10px] w-[100%]  mt-12 mb-12">
         <Link className={selectTextStyle(!selectedCategory)} href={"/post"}>
           All({totalCount})
@@ -37,7 +37,7 @@ const Page = async ({ params, searchParams }: Props) => {
           );
         })}
       </div>
-      <div className="flex flex-col gap-y-2">
+      <section className="flex flex-col gap-y-2">
         {(selectedCategory
           ? post.filter((item) => item.categoryPath === selectedCategory)
           : post
@@ -54,8 +54,8 @@ const Page = async ({ params, searchParams }: Props) => {
             />
           );
         })}
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 
