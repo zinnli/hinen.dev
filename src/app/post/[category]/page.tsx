@@ -22,7 +22,7 @@ const Post = async ({ params }: { params: Promise<{ category: string }> }) => {
 
   const post = await getPostList(category);
   const categories = await getMarkdownInfos();
-
+  console.log(category);
   const totalCount = categories.reduce((acc, curr) => acc + curr.count, 0);
 
   const selectTextStyle = (isSelected: boolean) =>
@@ -39,7 +39,7 @@ const Post = async ({ params }: { params: Promise<{ category: string }> }) => {
             <Link
               className={selectTextStyle(item.category === category)}
               key={i}
-              href={`post/${item.category}`}
+              href={`${item.category}`}
             >
               {item.category}({item.count})
             </Link>
