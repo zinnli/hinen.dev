@@ -12,7 +12,7 @@ const nextConfig = {
     });
     return config;
   },
-  basePath: isCI ? "" : "",
+  basePath: isCI ? "https://zinnli.github.io" : "",
   assetPrefix: isCI ? "https://zinnli.github.io" : "",
   ...(isCI && { output: "export" }), // CI에서만 static export 모드 사용
 };
