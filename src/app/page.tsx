@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import { List } from "@/components";
 import { getPostList } from "@/lib/mdx";
-import ProfileImage from "@/assets/images/profile.jpeg";
+import ProfileImage from "../assets/images/profile.jpeg";
 
 export const metadata: Metadata = {
   title: "ZINLOG",
