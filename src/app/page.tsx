@@ -30,6 +30,7 @@ const Blog = async () => {
           fill
           src="/profile.jpeg"
           alt="profile"
+          unoptimized
         />
       </div>
       {/* NOTE: 경력 기술서 - 노션링크 추가 예정 */}
