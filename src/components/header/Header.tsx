@@ -13,7 +13,7 @@ const Header = () => {
     `text-18 ${currentPath === path || (!currentPath && path === "blog") ? "text-black border-b border-b-primary_sub_30 font-bold" : "text-black/80"}  hover:text-primary`;
 
   return (
-    <header className="sticky top-0 flex justify-end w-[100%] max-w-[800px] gap-5 py-3 px-7 bg-gray_bg z-50">
+    <header className="sticky top-0 flex justify-end w-[100%] max-w-[800px] gap-5 py-3 bg-gray_bg z-50">
       <Link href="/" className={textBoldStyle("blog")}>
         ZINLOG
       </Link>
