@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 
 import { List } from "@/components";
 import { getPostList } from "@/lib/mdx";
-import ProfileImage from "../assets/images/profile.jpeg";
 
 export const metadata: Metadata = {
   title: "ZINLOG",
@@ -28,7 +27,8 @@ const Blog = async () => {
         {/* NOTE: bg 이미지 고민중 */}
         <Image
           className="w-[100%] h-[100%] bg-gray object-cover"
-          src={ProfileImage}
+          fill
+          src="/profile.jpeg"
           alt="profile"
         />
       </div>
