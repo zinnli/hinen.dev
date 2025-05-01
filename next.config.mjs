@@ -1,3 +1,5 @@
+const isCI = process.env.CI === "true";
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -10,7 +12,7 @@ const nextConfig = {
     });
     return config;
   },
-  output: "export",
+  ...(isCI && { output: "export" }), // CI에서만 static export 모드 사용
 };
 
 // Merge MDX config with Next.js config
