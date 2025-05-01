@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Head from "next/head";
 
-import { Header } from "@/components";
+import { Footer, Header } from "@/components";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,9 +19,12 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
           type="text/css"
         />
       </Head>
-      <body className="flex flex-col items-center bg-gray_bg">
-        <Header />
-        {children}
+      <body className="flex flex-col items-center justify-between h-[100vh] bg-gray_bg">
+        <main className="flex flex-col items-center w-[100%] max-w-[800px] px-7">
+          <Header />
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

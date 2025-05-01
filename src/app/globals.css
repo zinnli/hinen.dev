@@ -4,8 +4,10 @@
 
 @plugin "tailwindcss-animate";
 
+@import "../styles/fonts.css";
+
 :root {
-  font-family: D2Coding, "D2 coding", monospace;
+  font-family: "SpoqaHanSansNeo", monospace;
 }
 
 .text-overflow {
@@ -19,5 +21,4 @@
 }
 
 @layer base {
-  width: "100%";
 }

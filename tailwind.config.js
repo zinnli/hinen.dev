@@ -21,10 +21,8 @@ module.exports = {
         16: ["16px"],
         18: ["18px"],
         20: ["20px"],
-        22: ["22px"],
         30: ["30px"],
-        36: ["36px"],
-        40: ["40px"],
+        32: ["32px"],
       },
       typography: {
         DEFAULT: {
@@ -39,6 +37,10 @@ module.exports = {
             p: {
               fontSize: 15,
             },
+            article: {
+              width: "100%",
+            },
+
             ".callout-contents > p": {
               margin: 0,
             },
