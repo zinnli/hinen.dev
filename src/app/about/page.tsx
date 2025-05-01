@@ -14,7 +14,7 @@ const About = () => {
             <span>이현진</span>
             <span>LEE HYUNJIN</span>
           </div>
-          <span className=" text-18 text-primary_sub">Frontend developer</span>
+          <span className="text-18 text-primary_sub">Frontend developer</span>
         </div>
         <span>아름다운 UI를 사랑하고 구현해내는데서 행복을 느낍니다.</span>
       </section>
