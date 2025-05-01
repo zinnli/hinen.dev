@@ -10,10 +10,10 @@ const Header = () => {
   const currentPath = pathname.split("/")[1];
 
   const textBoldStyle = (path: string): string =>
-    `text-22 ${currentPath === path || (!currentPath && path === "blog") ? "text-black border-b border-b-primary_sub_30 font-bold" : "text-black/80"}  hover:text-primary`;
+    `text-18 ${currentPath === path || (!currentPath && path === "blog") ? "text-black border-b border-b-primary_sub_30 font-bold" : "text-black/80"}  hover:text-primary`;
 
   return (
-    <header className="sticky top-0 flex justify-end w-[100%] max-w-[750px] gap-5 py-3 px-7 bg-gray_bg z-50">
+    <header className="sticky top-0 flex justify-end w-[100%] max-w-[800px] gap-5 py-3 px-7 bg-gray_bg z-50">
       <Link href="/" className={textBoldStyle("blog")}>
         ZINLOG
       </Link>

@@ -29,7 +29,7 @@ const Post = async ({ params }: { params: Promise<{ category: string }> }) => {
     `text-16 ${isSelected ? "font-bold text-black" : "font-normal text-black/80"}`;
 
   return (
-    <main className="flex flex-col items-center w-[100%] max-w-[750px] px-7">
+    <main className="flex flex-col items-center w-[100%] max-w-[800px] px-7">
       <div className="flex justify-start gap-x-[10px] w-[100%]  mt-12 mb-12">
         <Link className={selectTextStyle(!category)} href={"/post"}>
           All({totalCount})

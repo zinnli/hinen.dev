@@ -15,10 +15,10 @@ const Blog = async () => {
   const post = await getPostList("");
 
   return (
-    <main className="flex flex-col items-center w-[100%] max-w-[750px] px-7">
+    <main className="flex flex-col items-center w-[100%] max-w-[800px] px-7">
       <div className="relative w-[100%] h-[150px] m-6 mt-12">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-50">
-          <span className="text-22 text-gray_bg font-black text-right">
+          <span className="text-18 text-gray_bg font-black text-right">
             WEB FRONTEND DEVELOPER
           </span>
           <span className="text-[80px] text-gray_bg italic font-black text-left leading-none z-50">
@@ -37,7 +37,7 @@ const Blog = async () => {
         &gt; more about me
       </Link>
       <section className="w-[100%]">
-        <h1 className="flex justify-start gap-x-5 w-[100%] mt-8 my-5 mb-3 text-36 text-black">
+        <h1 className="flex justify-start gap-x-5 w-[100%] mt-8 my-5 mb-3 text-30 text-black">
           <span>Recent</span>
           <span className="font-black">Posts</span>
         </h1>

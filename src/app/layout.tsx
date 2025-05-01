@@ -18,6 +18,11 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
           rel="stylesheet"
           type="text/css"
         />
+        <link
+          href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+          rel="stylesheet"
+          type="text/css"
+        />
       </Head>
       <body className="flex flex-col items-center bg-gray_bg">
         <Header />

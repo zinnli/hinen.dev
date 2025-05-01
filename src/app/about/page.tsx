@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const About = () => {
   return (
-    <main className="flex flex-col items-center w-[100%] max-w-[750px] px-7">
+    <main className="flex flex-col items-center w-[100%] max-w-[800px] px-7">
       <section className="flex flex-col mt-12 w-[100%]">
         <div className="flex justify-start gap-x-5 w-[100%] h-[100px] mb-10">
           <Image
@@ -18,12 +18,12 @@ const About = () => {
             src={ProfileImage}
             alt="profile"
           />
-          <div className="flex flex-col justify-between py-[5px]">
-            <div className="flex gap-x-2 text-30 font-bold text-primary">
+          <div className="flex flex-col justify-start py-[5px]">
+            <div className="flex gap-x-2 text-20 font-bold text-primary">
               <span>이현진</span>
               <span>LEE HYUNJIN</span>
             </div>
-            <span className=" text-22 text-primary_sub">
+            <span className=" text-18 text-primary_sub">
               Frontend developer
             </span>
           </div>
