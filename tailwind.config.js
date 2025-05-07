@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#FF982B",
+        primary: "#FF8000",
         primary_sub: "#FFBE87",
         white: "#fafaf8",
         gray_bg: "#F2F2F2",
@@ -59,7 +59,7 @@ module.exports = {
               position: "relative",
               bottom: 1,
               margin: "0 3px",
-              color: "#FF8A27",
+              color: "#FF8000",
               backgroundColor: "rgba(255,184,124,0.1)",
               fontFamily: 'D2Coding, "D2 coding", monospace',
               borderRadius: 3,
