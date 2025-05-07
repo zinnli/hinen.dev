@@ -2,7 +2,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { List } from "@/components";
-import { getMarkdownInfos, getPostList, getPostPaths } from "@/lib/mdx";
+import {
+  getMarkdownInfos,
+  getPostList,
+  getPostPaths,
+  parseMarkdownPath,
+} from "@/lib/mdx";
 
 export const metadata: Metadata = {
   title: "ZINLOG | POST",
@@ -10,12 +15,15 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  const categoryList = getPostPaths();
-  const paramList = categoryList.map((category) => ({ category }));
+  const postPaths: string[] = getPostPaths();
+  const paramList = postPaths
+    .map((path) => parseMarkdownPath(path))
+    .map((item) => ({
+      category: item.categoryPath,
+    }));
+
   return paramList;
 }
-
-export const dynamicParams = false;
 
 const Post = async ({ params }: { params: Promise<{ category: string }> }) => {
   const { category } = await params;
