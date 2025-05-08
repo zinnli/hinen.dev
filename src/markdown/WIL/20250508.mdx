@@ -1,0 +1,68 @@
+---
+title: WIL | 블로그 완성!
+date: 2025-05-08
+desc: 블로그 만들 때 생겼던 이슈 기록 :(
+---
+
+# 블로그 완성! 🎉
+
+> 블로그를 만들며 다양한 이슈를 겪었고, 그 중에서도 github action을 통해 배포하는 과정에서 해결했던 내용을 정리합니다.
+
+---
+
+## 1. 정적 배포 오류 (Static Export 오류)
+
+### 🧨 발생한 이슈
+
+정적 페이지를 생성하는 과정에서, `generateStaticParams`를 사용하지 않은 페이지에서 아래와 같은 빌드 오류가 발생했습니다.
+
+```bash
+> Build error occurred
+[Error: Page "/post/[category]/[slug]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.]
+Error: Process completed with exit code 1.
+```
+
+### 해결방법
+
+- 해당 페이지에 generateStaticParams 함수를 추가해 해결했습니다.
+- category 정보를 query로 받는 코드에서도 동일한 이슈가 발생했는데, 해당 방식은 정적 페이지에서 사용할 수 없어 [slug] 형태로 구조를 변경했습니다.
+
+2. 프로필 이미지 로딩 오류
+
+### 🧨 발생한 이슈
+
+next/image 컴포넌트를 사용했을 때, 이미지 최적화와 관련된 오류로 인해 배포 후 프로필 이미지가 정상적으로 보이지 않았습니다.
+
+```bash
+TypeError: /home/runner/work/_actions/actions/configure-pages/v5/src/config-parser.js#L290
+We were unable to determine how to inject the site metadata into your config. Generated URLs may be incorrect.
+The base URL for this site should be https://zinnli.github.io/. Please ensure your framework is configured to generate relative links appropriately.
+Error: Cannot read properties of undefined (reading 'type')
+```
+
+- GitHub Pages에서 배포 시 base URL 설정([https://zinnli.github.io/](https://zinnli.github.io/))이 필요함
+- next/image의 자동 최적화 기능이 작동하지 않아 이미지가 제대로 렌더링되지 않음
+
+### 해결방법
+
+unoptimized 속성을 추가하여 이미지 최적화를 비활성화하여 해결했습니다.
+
+```typescript
+// 해결 코드!
+
+<Image
+  className="w-[100%] h-[100%] bg-gray object-cover"
+  fill
+  src="/profile.jpeg"
+  alt="profile"
+  unoptimized
+/>
+```
+
+---
+
+next 블로그 생성에 대한 총정리 게시물을 작성해야할 것 같은데 어디서부터 시작해야할지 무척 두렵다. 조리있게 작성하고 싶은데 일기처럼 작성하는게 익숙해져서 걱정이 태산..
+
+```
+
+```
