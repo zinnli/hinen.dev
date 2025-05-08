@@ -38,7 +38,7 @@ const Blog = async () => {
         &gt; more about me
       </Link>
       <section className="w-[100%]">
-        <h1 className="flex justify-start gap-x-5 w-[100%] mt-7 my-5 mb-3 text-30 text-black">
+        <h1 className="flex justify-start gap-x-5 w-[100%] mt-7 my-5 mb-3 text-26 text-black sm:text-30">
           <span>Recent</span>
           <span className="font-black">Posts</span>
         </h1>

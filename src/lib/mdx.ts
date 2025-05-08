@@ -19,7 +19,7 @@ export const parsePostDetail = async (postPath: string): Promise<PostType> => {
 
   const { data, content } = matter(fileContents);
   const grayMatter = data as PostMetaType;
-  const date = dayjs(grayMatter.date).locale("ko").format("MMM DD, YYYY");
+  const date = dayjs(grayMatter.date).locale("ko").format("YYYY-MM-DD");
 
   return { ...grayMatter, content, date };
 };

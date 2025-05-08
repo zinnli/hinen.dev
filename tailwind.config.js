@@ -21,16 +21,17 @@ module.exports = {
         16: ["16px"],
         18: ["18px"],
         20: ["20px"],
+        26: ["26px"],
         30: ["30px"],
         32: ["32px"],
       },
       typography: {
         DEFAULT: {
           css: {
-            h1: { fontSize: "28px !important" },
-            h2: { fontSize: "24px !important" },
-            h3: { fontSize: "22px !important" },
-            h4: { fontSize: "18px !important" },
+            h1: { fontSize: "26px !important" },
+            h2: { fontSize: "22px !important" },
+            h3: { fontSize: "20px !important" },
+            h4: { fontSize: "17px !important" },
             "h2, h3, h4": {
               scrollMarginTop: "2rem",
             },

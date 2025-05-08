@@ -34,11 +34,11 @@ const Post = async ({ params }: { params: Promise<{ category: string }> }) => {
   const totalCount = categories.reduce((acc, curr) => acc + curr.count, 0);
 
   const selectTextStyle = (isSelected: boolean) =>
-    `text-16 ${isSelected ? "font-bold text-black" : "font-normal text-black/80"}`;
+    `text-14 sm:text-16 ${isSelected ? "font-bold text-black" : "font-normal text-black/80"}`;
 
   return (
     <>
-      <div className="flex justify-start gap-x-[10px] w-[100%]  mt-12 mb-12">
+      <div className="flex justify-start gap-x-[10px] w-[100%] mt-12 mb-12">
         <Link className={selectTextStyle(!category)} href={"/post"}>
           All({totalCount})
         </Link>
