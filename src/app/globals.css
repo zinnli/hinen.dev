@@ -21,4 +21,8 @@
 }
 
 @layer base {
+  body {
+    background-color: #fafaf8;
+    color: #1a1a1a;
+  }
 }

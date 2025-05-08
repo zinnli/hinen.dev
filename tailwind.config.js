@@ -35,7 +35,7 @@ module.exports = {
               scrollMarginTop: "2rem",
             },
             p: {
-              fontSize: 15,
+              fontSize: 14,
             },
             article: {
               width: "100%",
@@ -106,6 +106,7 @@ module.exports = {
             "pre > code > span": {
               paddingLeft: "1.1rem",
               paddingRight: "1rem",
+              fontSize: "0.75rem",
             },
 
             "pre code span": {
@@ -118,7 +119,7 @@ module.exports = {
 
             ".project p,ul,li": {
               margin: "5px 0 !important",
-              fontSize: 15,
+              fontSize: 14,
             },
 
             u: {
@@ -128,11 +129,6 @@ module.exports = {
             },
           },
         },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {
