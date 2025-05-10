@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ZINLOG | ABOUT",
+  title: "현진로그 | ABOUT",
   description: "저를 소개합니다.",
 };
 
@@ -16,7 +16,9 @@ const About = () => {
           </div>
           <span className="text-18 text-primary_sub">Frontend developer</span>
         </div>
-        <span>아름다운 UI를 사랑하고 구현해내는데서 행복을 느낍니다.</span>
+        <span>
+          배우고, 기록하고, 나눕니다. 성장과 공유를 위한 개발 로그입니다.
+        </span>
       </section>
     </>
   );

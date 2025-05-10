@@ -6,8 +6,8 @@ import { List } from "@/components";
 import { getPostList } from "@/lib/mdx";
 
 export const metadata: Metadata = {
-  title: "ZINLOG",
-  description: "현진 로그입니다.",
+  title: "현진로그",
+  description: "현진로그 로그입니다.",
 };
 
 const Blog = async () => {

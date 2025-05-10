@@ -5,8 +5,22 @@ import { Footer, Header } from "@/components";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ZINLOG",
-  description: "현진 로그입니다.",
+  title: "현진로그",
+  description: "이현진의 개발 블로그",
+  openGraph: {
+    title: "현진로그",
+    type: "website",
+    url: "https://zinnli.github.io/",
+    siteName: "현진로그",
+    images: [
+      {
+        url: "/og_image.png",
+        width: 800,
+        height: 400,
+        alt: "현진로그",
+      },
+    ],
+  },
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
