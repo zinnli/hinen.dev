@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "현진로그",
     images: [
       {
-        url: "/og_image.png",
+        url: "https://zinnli.github.io/og_image.png",
         width: 800,
         height: 400,
         alt: "현진로그",
