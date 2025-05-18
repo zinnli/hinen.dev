@@ -43,7 +43,7 @@ const Blog = async () => {
           <span className="font-black">Posts</span>
         </h1>
         <div className="flex flex-col gap-y-2">
-          {post.slice(0, 3).map((item) => {
+          {post.slice(0, 2).map((item) => {
             return (
               <List
                 key={item.filePath}
