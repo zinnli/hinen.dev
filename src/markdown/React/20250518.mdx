@@ -1,0 +1,74 @@
+---
+title: React | Geolocation API
+date: 2025-05-18
+desc: Geolocation API를 사용하면서 겪은 이슈와 코드 정리
+---
+
+# Geolocation API
+
+> 사용자의 현재 위치를 가져오는 API
+
+## Geolocation API
+
+[Geolocation API MDN 문서](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
+
+- `getCurrentPosition()` : 메소드를 호출해서 사용자의 현재 위치를 가져옴 (단발성)
+- `watchPosition()` : 기기의 위치가 변경될 때마다 자동으로 호출되어 업데이트된 위치를 가져옴 (지속적인 위치 추적)
+
+### 사용 전 권한 확인
+
+Geolocation API 사용하기 전에 아래와 같이 사용자의 위치 정보 접근 권한 상태를 확인합니다.
+
+### 현재 위치 가져오기 (`getCurrentPosition()`)
+
+```typescript
+// 위치정보 허용 코드
+useEffect(() => {
+  navigator.permissions?.query({ name: "geolocation" }).then((result) => {
+    setPermission(result.state); // granted, denied, prompt
+  });
+}, []);
+```
+
+### 실시간 위치 가져오기 (`watchPosition()`)
+
+```typescript
+// 현재 위치를 가져오는 코드
+const [location, setLocation] = useState({ lat: null, lng: null });
+
+const getLocation = () => {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = parseFloat(position.coords.latitude.toFixed(5));
+      const lng = parseFloat(position.coords.longitude.toFixed(5));
+      setLocation({ lat, lng });
+    },
+    (err) => {
+      console.log(err.code);
+    }
+  );
+};
+```
+
+```typescript
+// 실시간 위치 가져오는 코드
+const [watchLocation, setWatchLocation] = useState({ lat: null, lng: null });
+
+navigator.geolocation.watchPosition(
+  (position) => {
+    const lat = parseFloat(position.coords.latitude.toFixed(5));
+    const lng = parseFloat(position.coords.longitude.toFixed(5));
+
+    setWatchLocation({ lat, lng });
+  },
+  (err) => {
+    console.error("위치 에러:", err);
+  }
+);
+```
+
+### 주의사항
+
+- 모바일 환경에서는 네트워크 상태나 주변 환경에 따라 위치 정보가 부정확하거나 튀는 현상이 발생할 수 있습니다.
+
+#### \*반영 페이지 [여기!](https://geo-nu-ecru.vercel.app/)
