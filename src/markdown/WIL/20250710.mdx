@@ -1,0 +1,123 @@
+---
+title: WIL | 반응형 적용기 (feat. breakpoint가 없는..)
+date: 2025-07-10
+desc: breakpoint 없이 반응형 적용하기
+---
+
+# 250710_WIL
+
+### 반응형 적용기 (feat. breakpoint가 없는..)
+
+> 회사 프로젝트에서 다양한 기종의 화면 크기를 모두 고려해 반응형을 처리하기엔 한계가 있었다.
+
+> 이에 사내 `React-native`에서 사용하는 **기준 width 기반의 비율(`ratio`) 계산 방식**을 도입했고,  
+> 덕분에 각 화면마다 `breakpoint를` 설정하지 않아도 **유동적인 사이즈 조정**이 가능해졌다.
+
+---
+
+## 🚦 진행 방향
+
+- 기준이 되는 화면 너비(`MAX_WIDTH`)를 기준으로 현재 `window.innerWidth`와의 비율을 계산(=`ratio`)
+- 전역 `ratio`를 `globalStyle`에 전달하여 전체 폰트 및 요소 크기를 비례해서 조절
+- 컴포넌트에서는 `rem` 단위로만 스타일 지정
+
+## 📖 구현 방법
+
+### 1. 전역 `ratio` 상태를 만든다.
+
+```typescript
+// stores/style.ts
+// 1. 기준 화면 너비를 설정한다.
+const MAX_WIDTH = 375;
+
+const calculateRatio = (): number => {
+  const ratio = window.innerWidth / MAX_WIDTH;
+  // 2. 만약 375 이상에도 비율에 따라 조절이 되길 원한다면 조건을 제외하고 ratio값만 사용한다.
+  return ratio > 1 ? 1 : ratio;
+};
+
+interface RatioState {
+  ratio: number;
+  setRatio: (ratio: number) => void;
+}
+
+const useRatioStore = create<RatioState>((set) => ({
+  ratio: calculateRatio(),
+  setRatio: (ratio) => set(() => ({ ratio })),
+}));
+
+export { useRatioStore, calculateRatio };
+```
+
+### 2. 앱 진입 시 ratio 동기화를 진행하고, 1에서 만든 ratio 값을 globalStyle에 전달한다.
+
+```typescript
+// App.tsx
+const App = () ={
+
+ const ratio = useRatioStore((state) => state.ratio);
+  const setRatio = useRatioStore((state) => state.setRatio);
+
+  useEffect(() => {
+    const updateRatio = (): void => {
+      setRatio(calculateRatio());
+    };
+
+    window.addEventListener("resize", updateRatio);
+
+    return () => {
+      window.removeEventListener("resize", updateRatio);
+    };
+  }, [setRatio]);
+
+  return(
+   <ThemeProvider theme={theme}>
+    <global styles={globalStyles(ratio)}
+     <Router/>
+   </ThemeProvider>
+  )
+}
+```
+
+### 3. `globalStyle`에 반영한다.
+
+```typescript
+// globalStyle.ts
+const globalStyles = (ratio: number) => css`
+  ${emotionReset}
+
+  html {
+    font-size: calc(${ratio} * 62.5%);
+  }
+
+...
+`;
+
+export default globalStyles;
+```
+
+### 4. 이제 사용하는 곳에서 `rem` 단위로 사용하면 끝.!
+
+---
+
+## ✅ 결과
+
+이렇게 사용하면 화면은 아래와 같이 동작한다.
+
+### 📷 결과 이미지
+
+<div class="responsive-images">
+  <img src="/images/20250710_반응형_01.png" alt="width 375 이상" />
+  <img src="/images/20250710_반응형_02.png" alt="width 375 미만" />
+</div>
+
+<details>
+  <summary>📽️ 결과 영상</summary>
+  <video
+    src="/images/20250710_반응형_비디오.mov"
+    alt="영상"
+    controls
+    muted
+    playsInline
+  />
+</details>

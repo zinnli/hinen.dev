@@ -20,6 +20,22 @@
   -webkit-box-orient: vertical;
 }
 
+.responsive-images {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 780px) {
+  .responsive-images {
+    flex-direction: row;
+  }
+
+  .responsive-images img {
+    width: 50%;
+  }
+}
+
 @layer base {
   body {
     background-color: #fafaf8;
