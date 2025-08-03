@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { Post } from "@/components";
 import { getPostDetail, getPostPaths, parseMarkdownPath } from "@/lib/mdx";
+import Comment from "@/components/comment/Comment";
 
 export function generateStaticParams() {
   const postPaths: string[] = getPostPaths();
@@ -49,13 +50,16 @@ const PostDetail = async ({
   const post = await getPostDetail(category, slug);
 
   return (
-    <section className="flex flex-col w-[100%] max-w-[800px] px-4 py-10">
-      <h2 className="flex justify-center w-[100%] text-primary text-26 sm:text-30 font-bold mb-10">
-        {post.title}
-      </h2>
-      <span className="mb-8 text-right">{post.date}</span>
-      <Post post={post} />
-    </section>
+    <>
+      <section className="flex flex-col w-[100%] max-w-[800px] px-4 py-10">
+        <h2 className="flex justify-center w-[100%] text-primary text-26 sm:text-30 font-bold mb-10">
+          {post.title}
+        </h2>
+        <span className="mb-8 text-right">{post.date}</span>
+        <Post post={post} />
+        <Comment />
+      </section>
+    </>
   );
 };
 
