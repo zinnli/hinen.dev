@@ -33,8 +33,10 @@ const Blog = async () => {
           unoptimized
         />
       </div>
-      {/* NOTE: 경력 기술서 - 노션링크 추가 예정 */}
-      <Link href="" className="hover:text-primary">
+      <Link
+        href="https://www.notion.so/1fafa40e612b80cda5c0d9f064b228bd"
+        className="hover:text-primary"
+      >
         &gt; more about me
       </Link>
       <section className="w-[100%]">
