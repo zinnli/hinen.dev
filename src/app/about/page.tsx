@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "현진로그 | ABOUT",
+  title: "HINEN | ABOUT",
   description: "저를 소개합니다.",
 };
 

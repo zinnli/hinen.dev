@@ -10,7 +10,7 @@ import {
 } from "@/lib/mdx";
 
 export const metadata: Metadata = {
-  title: "현진로그 | POST",
+  title: "HINEN | POST",
   description: "공부한 내용을 정리, 공유합니다.",
 };
 
