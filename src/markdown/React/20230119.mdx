@@ -97,24 +97,26 @@ boilerplate : 변형이 거의 없는 여러 장소에서 반복되는 코드의
       - state가 loading이면 Promise
 
 <details>
-<summary>class Loadable 예시</summary>
-<div markdown="1">
+  <summary>class Loadable 예시</summary>
+    <div markdown="1">
+   
+    ```react
+    function UserInfo({userID}) {
+      const userNameLoadable = useRecoilValueLoadable(userNameQuery(userID));
+      switch (userNameLoadable.state) {
+        case 'hasValue':
+          return <div>{userNameLoadable.contents}</div>;
+        case 'loading':
+          return <div>Loading...</div>;
+        case 'hasError':
+          throw userNameLoadable.contents;
+      }
+    }
+    ```
 
-```react
-function UserInfo({userID}) {
-  const userNameLoadable = useRecoilValueLoadable(userNameQuery(userID));
-  switch (userNameLoadable.state) {
-    case 'hasValue':
-      return <div>{userNameLoadable.contents}</div>;
-    case 'loading':
-      return <div>Loading...</div>;
-    case 'hasError':
-      throw userNameLoadable.contents;
-  }
-}
-```
+    </div>
 
-</div></details>
+</details>
 
 ## 3. Recoil에서 비동기로 데이터를 받아올 때 state 관리법
 
@@ -129,27 +131,27 @@ function UserInfo({userID}) {
   - 컴포넌트에서 Recoil state를 사용하기 위해서는 recoil 상태를 사용하고자 하는 컴포넌트의 부모에 RecoilRoot를 선언해주어야 함
   - RecoilRoot는 여러 개를 선언할 수 있음
 
-            <details>
-
-        <summary>RecoilRoot 예제</summary>
-
+<details>
+  <summary>RecoilRoot 예제</summary>
     <div markdown="1">
 
-  ```react
-  // App.js
-  import React from 'react';
-  import { RecoilRoot } from 'recoil';
+    ```react
+    // App.js
+    import React from 'react';
+    import { RecoilRoot } from 'recoil';
 
-  const App = () => {
-    return (
-      <RecoilRoot>
-        <CharacterCounter />
-      </RecoilRoot>
-    );
-  }
-  ```
+    const App = () => {
+      return (
+        <RecoilRoot>
+          <CharacterCounter />
+        </RecoilRoot>
+      );
+    }
+    ```
 
-        </div></details><br/>
+    </div>
+
+</details>
 
 - **Atoms**
 
@@ -157,54 +159,56 @@ function UserInfo({userID}) {
   - atom 값을 읽는 컴포넌트들은 암묵적으로 atom을 구독함 → atom에 어떤 변화가 있다면 그 atom을 구독하는 모든 컴포넌트가 리렌더링됨
   - key와 default값을 필수로 선언해줘야함 - key : 내부적으로 atom을 식별하는 데 사용되는 고유한 문자열<br/>전역적으로 고유한 값을 가져야 하므로 네이밍 시 $와 같은 구분자를 붙여 사용하기도 함 - default : atom의 초깃값<br/>다양한 타입을 사용할 수 있으며, 동일한 타입의 값을 나타내는 다른 atom이나 selector도 가능함
 
-            <details>
+<details>
 
-        <summary>Atoms 예제</summary>
+<summary>Atoms 예제</summary>
 
     <div markdown="1">
 
-  ```react
-  // atoms.js
-  import { atom } from "recoil";
+    ```react
+    // atoms.js
+    import { atom } from "recoil";
 
-  export const countState = atom({
-    key: "countState", // 전역적으로 고유한 값
-    default: 0 // 초깃값
-  });
+    export const countState = atom({
+      key: "countState", // 전역적으로 고유한 값
+      default: 0 // 초깃값
+    });
 
-  // Counter.js
-  import React from "react";
-  import { useRecoilState, useResetRecoilState } from "recoil";
-  import { countState } from "../states/atoms";
+    // Counter.js
+    import React from "react";
+    import { useRecoilState, useResetRecoilState } from "recoil";
+    import { countState } from "../states/atoms";
 
-  export const Counter = () => {
-    const [count, setCount] = useRecoilState(countState);
-    const resetCount = useResetRecoilState(countState);
+    export const Counter = () => {
+      const [count, setCount] = useRecoilState(countState);
+      const resetCount = useResetRecoilState(countState);
 
-    const increase = () => {
-      setCount(count + 1);
+      const increase = () => {
+        setCount(count + 1);
+      };
+
+      const reset = () => {
+        resetCount();
+      };
+
+      return (
+        <div>
+          <h2>{count}</h2>
+          <button onClick={() => increase()}>+</button>
+          <button onClick={() => reset()}>reset</button>
+        </div>
+      );
     };
 
-    const reset = () => {
-      resetCount();
-    };
+    ```
 
-    return (
-      <div>
-        <h2>{count}</h2>
-        <button onClick={() => increase()}>+</button>
-        <button onClick={() => reset()}>reset</button>
-      </div>
-    );
-  };
+    - 컴포넌트에서 atom을 읽고 쓸 수 있게 하기 위해서는 useRecoilState()를 사용
+    - React의 useState()와 상당히 유사한 형태(기본값 대신 Recoil state를 인자로 받는 다는 것을 제외하면!)
+    - useRecoilState()는 상태값과, setter함수를 리턴 → 이 hook은 암묵적으로 state를 구독함(atom 값이 변경되면 컴포넌트가 자동적으로 리렌더링)
 
-  ```
+    </div>
 
-  - 컴포넌트에서 atom을 읽고 쓸 수 있게 하기 위해서는 useRecoilState()를 사용
-  - React의 useState()와 상당히 유사한 형태(기본값 대신 Recoil state를 인자로 받는 다는 것을 제외하면!)
-  - useRecoilState()는 상태값과, setter함수를 리턴 → 이 hook은 암묵적으로 state를 구독함(atom 값이 변경되면 컴포넌트가 자동적으로 리렌더링)
-
-    </div></details><br/>
+</details>
 
 - **Selectors**
 
