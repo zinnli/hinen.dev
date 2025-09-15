@@ -6,7 +6,7 @@ import { List } from "@/components";
 import { getPostList } from "@/lib/mdx";
 
 export const metadata: Metadata = {
-  title: "HINEN",
+  title: "HINEN LOG",
   description: "배운 것을 기록하는 개발 블로그입니다.",
 };
 

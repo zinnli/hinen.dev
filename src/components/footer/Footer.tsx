@@ -17,14 +17,14 @@ const Footer = () => {
         </Link>
         <Link
           className="hover:fill-primary"
-          href="https://www.instagram.com/zinn__lii/"
+          href="https://www.instagram.com/hinen_il/"
           target="_blank"
         >
           <InstaIcon />
         </Link>
       </div>
       <span className="flex justify-center">
-        © 2025. Hyunjin Lee all rights reserved.
+        © 2025. Hinen all rights reserved.
       </span>
     </footer>
   );
