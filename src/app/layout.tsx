@@ -34,7 +34,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         />
         <meta
           name="google-site-verification"
-          content="CP1man3cxFwR-70NpyFfiyBclXRYHUT-N95WLnl5Ydo"
+          content="dwXMJrRDyk5PeTksqAXirxdZvZ77pohP_OFF7-bIl74"
         />
       </Head>
       <body className="flex flex-col items-center justify-between h-[100vh] bg-gray_bg">
