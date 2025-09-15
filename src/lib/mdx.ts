@@ -20,8 +20,9 @@ export const parsePostDetail = async (postPath: string): Promise<PostType> => {
   const { data, content } = matter(fileContents);
   const grayMatter = data as PostMetaType;
   const date = dayjs(grayMatter.date).locale("ko").format("YYYY-MM-DD");
+  const updatedDate = new Date(grayMatter.date);
 
-  return { ...grayMatter, content, date };
+  return { ...grayMatter, content, date, updatedDate };
 };
 
 export const getPostDetail = async (
@@ -62,12 +63,13 @@ export const getPostList = async (
         title: postDetaiilInfo.title,
         desc: postDetaiilInfo.desc,
         date: postDetaiilInfo.date,
+        updatedDate: postDetaiilInfo.updatedDate,
       };
     })
   );
 
   const sortedPostList = postList.sort(
-    (a, b) => dayjs(b.date).unix() - dayjs(a.date).unix()
+    (a, b) => b.updatedDate.getTime() - a.updatedDate.getTime()
   );
 
   return sortedPostList;

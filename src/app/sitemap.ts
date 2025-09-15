@@ -10,9 +10,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const posts = await getPostList(info.category); // 각 카테고리별로 포스트 목록을 가져옴
       return posts.map((post) => ({
         url: `https://zinnli.github.io/${post.filePath}`, // 카테고리와 slug를 합쳐서 URL 구성
-        lastModified: new Date(post.date),
+        lastModified: post.updatedDate.toISOString(),
         changeFrequency: "weekly" as const,
-        priority: 0.6,
+        priority: 0.7,
+        sitemapSize: 7000,
       }));
     })
   );

@@ -9,6 +9,7 @@ export type PostType = {
   date: string;
   desc: string;
   content: string;
+  updatedDate: Date;
 };
 
 export type MarkdownType = {
@@ -16,4 +17,4 @@ export type MarkdownType = {
   filePath: string;
 };
 
-export type PostListType = PostMetaType & MarkdownType;
+export type PostListType = PostMetaType & MarkdownType & { updatedDate: Date };
