@@ -32,6 +32,10 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
           rel="stylesheet"
           type="text/css"
         />
+        <meta
+          name="google-site-verification"
+          content="CP1man3cxFwR-70NpyFfiyBclXRYHUT-N95WLnl5Ydo"
+        />
       </Head>
       <body className="flex flex-col items-center justify-between h-[100vh] bg-gray_bg">
         <main className="flex flex-col items-center w-[100%] max-w-[800px] px-7">
